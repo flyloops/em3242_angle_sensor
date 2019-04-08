@@ -1,6 +1,6 @@
 ## EM3242 Angle Sensor 
 
-Firmware + Python libraries for collecting data from the EM3242 absolute angle senosr.
+Firmware + Python library for collecting data from the EM3242 absolute angle sensor.
 
 ## Firmware
 
