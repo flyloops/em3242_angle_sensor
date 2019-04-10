@@ -12,7 +12,7 @@ class EM3242_AngleSensor(serial.Serial):
     RESET_SLEEP_DT = 0.5
     BAUDRATE = 115200
 
-    def __init__(self,port='/dev/ttyACM0',timeout=10.0):
+    def __init__(self, port='/dev/ttyACM0', timeout=10.0, sigint_handler=True):
         param = {'baudrate': self.BAUDRATE, 'timeout': timeout}
         super(EM3242_AngleSensor,self).__init__(port,**param)
         time.sleep(self.RESET_SLEEP_DT)
@@ -22,7 +22,8 @@ class EM3242_AngleSensor(serial.Serial):
         self.running = False
         self._angle = 0.0
 
-        signal.signal(signal.SIGINT,self.sigint_handler)
+        if sigint_handler:
+            signal.signal(signal.SIGINT,self.sigint_handler)
 
     @property
     def angle(self):
